@@ -218,6 +218,7 @@ public class SkyHanniMod {
         loadModule(new SkyMartCopperPrice());
         loadModule(new GardenVisitorFeatures());
         loadModule(new GardenInventoryNumbers());
+        loadModule(new YawSnapping());
         loadModule(new GardenVisitorTimer());
         loadModule(new GardenNextPlotPrice());
         loadModule(new GardenCropMilestoneDisplay());

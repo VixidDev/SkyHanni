@@ -23,6 +23,7 @@
 + Added **Show Price** - Show the bazaar price of the items required for the visitors.
 + Added **Crop Milestone** Number - Show the number of the crop milestone in the inventory.
 + Added **Crop Upgrades** Number - Show the number of upgrades in the crop upgrades inventory.
++ Added **Yaw Snapping** - Make it harder to overshoot certain yaw angles. (contrib nea89)
 + Added **Visitor Timer** - Timer when the next visitor will appear, and a number how many visitors are already waiting.
 + Added **Visitor Notification** - Show as title and in chat when a new visitor is visiting your island.
 + Added **Plot Price** - Show the price of the plot in coins when inside the Configure Plots inventory.
