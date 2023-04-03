@@ -228,6 +228,7 @@
 + **Hide dead entities** - Similar to Skytil's feature for inside dungeon, but for everywhere.
 + **Tps Display** - Show the Tps of the current server.
 + **Particle Hider** - Hide blaze particles, fire block particles, fireball particles, near redstone particles, far particles or smoke particles.
++ **Yaw Snapping** - Snap your yaw to certain angles
 + Chicken Head Timer.
 + **rancher boots** speed display.
 + **CH Join** - Helps buy a Pass for accessing the Crystal Hollows if needed.
