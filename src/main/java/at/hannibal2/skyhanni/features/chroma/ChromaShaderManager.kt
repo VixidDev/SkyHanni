@@ -54,5 +54,7 @@ enum class ChromaType(val shader: ShaderManager.Shaders) {
     /**
      * See [TexturedChromaShader]
      */
-    TEXTURED(ShaderManager.Shaders.TEXTURED_CHROMA)
+    TEXTURED(ShaderManager.Shaders.TEXTURED_CHROMA),
+    ULTIMATE_STANDARD(ShaderManager.Shaders.ULTIMATE_STANDARD),
+    ULTIMATE_TEXTURED(ShaderManager.Shaders.ULTIMATE_CHROMA)
 }

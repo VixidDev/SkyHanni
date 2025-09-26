@@ -4,11 +4,16 @@ import at.hannibal2.skyhanni.utils.RenderUtils.HorizontalAlignment
 import at.hannibal2.skyhanni.utils.RenderUtils.VerticalAlignment
 import at.hannibal2.skyhanni.utils.renderables.Renderable
 
-fun Renderable.Companion.placeholder(width: Int, height: Int = 10) = object : Renderable {
+fun Renderable.Companion.placeholder(
+    width: Int,
+    height: Int = 10,
+    horizontalAlign: HorizontalAlignment = HorizontalAlignment.LEFT,
+    verticalAlign: VerticalAlignment = VerticalAlignment.TOP
+) = object : Renderable {
     override val width = width
     override val height = height
-    override val horizontalAlign = HorizontalAlignment.LEFT
-    override val verticalAlign = VerticalAlignment.TOP
+    override val horizontalAlign = horizontalAlign
+    override val verticalAlign = verticalAlign
 
     @Suppress("EmptyFunctionBlock")
     override fun render(mouseOffsetX: Int, mouseOffsetY: Int) {

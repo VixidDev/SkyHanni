@@ -62,6 +62,11 @@ class EnchantParsingConfig {
     val poorEnchantColor: Property<LorenzColor> = Property.of(LorenzColor.GRAY)
 
     @Expose
+    @ConfigOption(name = "Chroma Ultimates", desc = "Gives Ultimate enchants a chroma effect")
+    @ConfigEditorBoolean
+    var chromaUltimates: Property<Boolean> = Property.of(false)
+
+    @Expose
     @ConfigOption(name = "Comma Format", desc = "Change the format of the comma after each enchant.")
     @ConfigEditorDropdown
     val commaFormat: Property<CommaFormat> = Property.of(CommaFormat.COPY_ENCHANT)

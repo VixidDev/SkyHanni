@@ -4,21 +4,18 @@ import at.hannibal2.skyhanni.api.minecraftevents.ClientEvents
 import at.hannibal2.skyhanni.config.features.chroma.ChromaConfig.Direction
 import at.hannibal2.skyhanni.mixins.transformers.AccessorMinecraft
 import at.hannibal2.skyhanni.utils.compat.GuiScreenUtils
-import at.hannibal2.skyhanni.utils.shader.Shader
 import at.hannibal2.skyhanni.utils.shader.Uniform
 import net.minecraft.client.Minecraft
 
-/**
- * Modified from SkyblockAddons
- *
- * Credit: [ChromaShader.java](https://github.com/BiscuitDevelopment/SkyblockAddons/blob/main/src/main/java/codes/biscuit/skyblockaddons/shader/chroma/ChromaShader.java)
- */
+abstract class UltimateChromaShader(vertex: String, fragment: String) : ChromaShader(vertex, fragment) {
 
-abstract class ChromaShader(vertex: String, fragment: String) : Shader(vertex, fragment) {
+    var hues: FloatArray = floatArrayOf(305f / 360f, 290f / 360f, 255f / 360f)
+    var saturations: FloatArray = floatArrayOf(1f, 1f, 1f)
+    var brightnesses: FloatArray = floatArrayOf(1f, 0.5f, 1f)
 
     override fun registerUniforms() {
         registerUniform(Uniform.UniformType.FLOAT, "chromaSize") {
-            ChromaManager.config.chromaSize.get() * (GuiScreenUtils.displayWidth / 100f)
+            ChromaManager.config.ultimateChromaSize.get() * (GuiScreenUtils.displayWidth / 100f)
         }
         registerUniform(Uniform.UniformType.FLOAT, "timeOffset") {
             //#if MC < 1.21
@@ -36,7 +33,7 @@ abstract class ChromaShader(vertex: String, fragment: String) : Shader(vertex, f
             ticks * chromaSpeed
         }
         registerUniform(Uniform.UniformType.FLOAT, "saturation") {
-            ChromaManager.config.chromaSaturation
+            ChromaManager.config.ultimateChromaSaturation
         }
         registerUniform(Uniform.UniformType.BOOL, "forwardDirection") {
             when (ChromaManager.config.chromaDirection) {
@@ -44,5 +41,9 @@ abstract class ChromaShader(vertex: String, fragment: String) : Shader(vertex, f
                 Direction.BACKWARD_RIGHT, Direction.BACKWARD_LEFT -> false
             }
         }
+        registerUniform(Uniform.UniformType.VEC3, "hues") { hues }
+        registerUniform(Uniform.UniformType.VEC3, "saturations") { saturations }
+        registerUniform(Uniform.UniformType.VEC3, "brightnesses") { brightnesses }
     }
+
 }

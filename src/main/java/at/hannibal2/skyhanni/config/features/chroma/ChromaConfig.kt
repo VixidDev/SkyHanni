@@ -1,6 +1,8 @@
 package at.hannibal2.skyhanni.config.features.chroma
 
+import at.hannibal2.skyhanni.SkyHanniMod
 import at.hannibal2.skyhanni.config.FeatureToggle
+import at.hannibal2.skyhanni.features.chroma.ChromaEditor
 import at.hannibal2.skyhanni.features.chroma.ChromaManager
 import com.google.gson.annotations.Expose
 import io.github.notenoughupdates.moulconfig.annotations.ConfigEditorBoolean
@@ -25,7 +27,7 @@ class ChromaConfig {
     @Expose
     @ConfigOption(name = "Chroma Size", desc = "Change the size of each color in the chroma.")
     @ConfigEditorSlider(minValue = 1f, maxValue = 100f, minStep = 1f)
-    var chromaSize: Float = 30f
+    var chromaSize: Property<Float> = Property.of(30f)
 
     @Expose
     @ConfigOption(name = "Chroma Speed", desc = "Change how fast the chroma animation moves.")
@@ -51,6 +53,20 @@ class ChromaConfig {
 
         override fun toString() = displayName
     }
+
+    @Expose
+    @ConfigOption(name = "Ultimate Chroma Size", desc = "Change the size of each color in the chroma for ultimate enchants exclusively.")
+    @ConfigEditorSlider(minValue = 1f, maxValue = 100f, minStep = 1f)
+    var ultimateChromaSize: Property<Float> = Property.of(5f)
+
+    @Expose
+    @ConfigOption(name = "Ultimate Chroma Saturation", desc = "Change the saturation of the chroma for ultimate enchants exclusively.")
+    @ConfigEditorSlider(minValue = 0f, maxValue = 1f, minStep = 0.01f)
+    var ultimateChromaSaturation: Float = 0.75f
+
+    @ConfigOption(name = "Customise Chromas", desc = "Customise the standard and ultimate chromas.")
+    @ConfigEditorButton(buttonText = "Editor")
+    val chromaEditor: Runnable = Runnable { SkyHanniMod.screenToOpen = ChromaEditor() }
 
     @ConfigOption(name = "Reset to Default", desc = "Reset all chroma settings to the default.")
     @ConfigEditorButton(buttonText = "Reset")

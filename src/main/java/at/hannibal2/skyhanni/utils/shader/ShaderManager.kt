@@ -2,6 +2,8 @@ package at.hannibal2.skyhanni.utils.shader
 
 import at.hannibal2.skyhanni.features.chroma.StandardChromaShader
 import at.hannibal2.skyhanni.features.chroma.TexturedChromaShader
+import at.hannibal2.skyhanni.features.chroma.UltimateStandardChromaShader
+import at.hannibal2.skyhanni.features.chroma.UltimateTexturedChromaShader
 import at.hannibal2.skyhanni.features.misc.DarkenShader
 import at.hannibal2.skyhanni.shader.CircleShader
 import at.hannibal2.skyhanni.shader.RadialGradientCircleShader
@@ -29,6 +31,8 @@ object ShaderManager {
     enum class Shaders(val shader: Shader) {
         STANDARD_CHROMA(StandardChromaShader.INSTANCE),
         TEXTURED_CHROMA(TexturedChromaShader.INSTANCE),
+        ULTIMATE_STANDARD(UltimateStandardChromaShader.INSTANCE),
+        ULTIMATE_CHROMA(UltimateTexturedChromaShader.INSTANCE),
         ROUNDED_RECTANGLE(RoundedRectangleShader.INSTANCE),
         ROUNDED_RECT_OUTLINE(RoundedRectangleOutlineShader.INSTANCE),
         ROUNDED_TEXTURE(RoundedTextureShader.INSTANCE),

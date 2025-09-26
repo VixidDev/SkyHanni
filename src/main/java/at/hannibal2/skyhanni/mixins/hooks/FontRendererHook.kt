@@ -102,10 +102,10 @@ object FontRendererHook {
     }
 
     @JvmStatic
-    fun toggleChromaOn() {
+    fun toggleChromaOn(formatIndex: Int) {
         if (!SkyBlockUtils.inSkyBlock) return
 
-        currentDrawState?.newChromaEnv()?.bindActualColor(RenderUtils.getAlpha())
+        currentDrawState?.newChromaEnv(formatIndex)?.bindActualColor(RenderUtils.getAlpha())
     }
 
     @JvmStatic
@@ -142,15 +142,15 @@ object FontRendererHook {
     }
 
     @JvmStatic
-    fun insertZColorCode(constant: String): String {
-        return if (SkyBlockUtils.inSkyBlock && !isChromaEnabled()) constant else "0123456789abcdefklmnorz"
+    fun insertZXColorCodes(constant: String): String {
+        return if (SkyBlockUtils.inSkyBlock && !isChromaEnabled()) constant else "0123456789abcdefklmnorzx"
     }
 
     @JvmStatic
     fun toggleChromaAndResetStyle(formatIndex: Int): Boolean {
         if (!isEnabled()) return false
-        if (formatIndex == CHROMA_FORMAT_INDEX) {
-            toggleChromaOn()
+        if (formatIndex >= CHROMA_FORMAT_INDEX) {
+            toggleChromaOn(formatIndex)
             return true
         }
         return false

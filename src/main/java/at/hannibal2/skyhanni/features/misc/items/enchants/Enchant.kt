@@ -108,7 +108,12 @@ open class Enchant : Comparable<Enchant> {
     class Normal : Enchant()
 
     class Ultimate : Enchant() {
-        override fun getFormat(level: Int, itemStack: ItemStack?) = "§d§l"
+        override fun getFormat(level: Int, itemStack: ItemStack?): String {
+            val config = SkyHanniMod.feature.inventory.enchantParsing
+
+            if (config.chromaUltimates.get()) return "§X§l"
+            return "§d§l"
+        }
     }
 
     class Stacking : Enchant() {

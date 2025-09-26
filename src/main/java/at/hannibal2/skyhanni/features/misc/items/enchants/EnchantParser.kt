@@ -125,6 +125,7 @@ object EnchantParser {
             config.commaFormat,
             config.hideVanillaEnchants,
             config.hideEnchantDescriptions,
+            config.chromaUltimates,
             ChromaManager.config.enabled,
         ) {
             markCacheDirty()

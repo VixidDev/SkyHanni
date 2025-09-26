@@ -14,9 +14,11 @@ object ChromaManager {
     @JvmStatic
     fun resetChromaSettings() {
         with(config) {
-            chromaSize = 30f
+            chromaSize.set(30f)
             chromaSpeed = 6f
             chromaSaturation = 0.75f
+            ultimateChromaSize.set(5f)
+            ultimateChromaSaturation = 0.75f
             allChroma = false
             ignoreChat = false
             chromaDirection = ChromaConfig.Direction.FORWARD_RIGHT

@@ -29,8 +29,8 @@ public abstract class MixinFontRenderer {
      * Modify color code constant to add Z color code
      */
     @ModifyConstant(method = "renderStringAtPos", constant = @Constant(stringValue = "0123456789abcdefklmnor"))
-    public String insertZColorCode(String constant) {
-        return FontRendererHook.insertZColorCode(constant);
+    public String insertZXColorCodes(String constant) {
+        return FontRendererHook.insertZXColorCodes(constant);
     }
 
     /**
@@ -47,7 +47,7 @@ public abstract class MixinFontRenderer {
     protected abstract void resetStyles();
 
     /**
-     * Inject call to {@link FontRendererHook#toggleChromaOn()} to check for Z color code index and if so,
+     * Inject call to {@link FontRendererHook#toggleChromaOn(int formatIndex)} to check for Z color code index and if so,
      * reset styles and toggle chroma on
      */
     @Inject(method = "renderStringAtPos", at = @At(value = "INVOKE", target = "Ljava/lang/String;indexOf(I)I", ordinal = 0, shift = At.Shift.BY, by = 2), locals = LocalCapture.CAPTURE_FAILHARD)

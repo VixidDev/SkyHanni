@@ -1,5 +1,6 @@
 package at.hannibal2.skyhanni.features.chroma
 
+import at.hannibal2.skyhanni.SkyHanniMod
 import at.hannibal2.skyhanni.utils.ColorUtils
 import at.hannibal2.skyhanni.utils.shader.ShaderHelper
 import net.minecraft.client.renderer.GlStateManager
@@ -24,9 +25,9 @@ class ChromaFontRenderer(private val baseColor: Int) {
         chromaOn = false
     }
 
-    fun loadChromaEnv() {
+    fun loadChromaEnv(formatIndex: Int = 22) {
         if (chromaOn) {
-            newChromaEnv()
+            newChromaEnv(formatIndex)
         }
     }
 
@@ -34,9 +35,19 @@ class ChromaFontRenderer(private val baseColor: Int) {
         if (ShaderHelper.areShadersSupported() && !chromaOn) ChromaShaderManager.end()
     }
 
-    fun newChromaEnv(): ChromaFontRenderer {
+    fun newChromaEnv(formatIndex: Int): ChromaFontRenderer {
         if (ShaderHelper.areShadersSupported()) {
-            ChromaShaderManager.begin(ChromaType.TEXTURED)
+
+            val chromaUltimate = SkyHanniMod.feature.inventory.enchantParsing.chromaUltimates.get()
+
+            val chromaType = when (formatIndex) {
+                23 -> {
+                    if (chromaUltimate) ChromaType.ULTIMATE_TEXTURED else ChromaType.TEXTURED
+                }
+                else -> ChromaType.TEXTURED
+            }
+
+            ChromaShaderManager.begin(chromaType)
             GlStateManager.shadeModel(GL11.GL_SMOOTH)
         }
         return this
